@@ -16,11 +16,18 @@ class PWorker:
             return
         self.started = True
         self._thread.start()
-        
-    def stop(self):
+
+    def init_stop(self):
         if(self.started == False):
             return
         self.started = False
+        self.logger.info(f"Stop signal sent to worker at {self.address}")
+
+    def join(self):
+        self._thread.join()   
+
+    def stop(self):
+        self.init_stop()
         self._thread.join()   
 
     def _run(self):

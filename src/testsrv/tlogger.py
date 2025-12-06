@@ -2,7 +2,7 @@ import logging
 
 class TLogger:
 
-    @classmethod
+    @classmethod 
     @staticmethod
     def create_logger(thread_name):
         logger = logging.getLogger(thread_name)
