@@ -1,3 +1,4 @@
+import json
 from testsrv.pworker import PWorker
 
 class PManager:
@@ -7,7 +8,7 @@ class PManager:
     def add(self, name, address):
         if name in self.workers:
             return {"Thread already exists"}
-        pw = PWorker(address)
+        pw = PWorker(address, 5.0)
         self.workers[name] = pw
         pw.start()
         return {f"Thread {name} initiated"}
